@@ -1,0 +1,23 @@
+# ------------------- Simulation control -------------------
+units       lj          # 单位制: real / lj
+dt          0.005           # 时间步长 
+steps       300000        # 总步数
+thermo      1           # 每隔多少步输出一次热力学信息
+T_target    5         # 目标温度
+rand_seed   1234
+skin        0.2
+# ------------------- Nose–Hoover chain -------------------
+nhc_chain   3             # 链长 M
+Tdamp       50.0           # 温控阻尼 
+
+# ------------------- Lennard-Jones parameters-------------------
+epsilon     1         
+sigma       1         
+rc          5          
+mass        1       
+
+# ------------------- File IO -------------------
+coords      coords500.data   # 初始结构
+output      output.log    # 输出日志
+plot        md_energy_temp.png   # 输出图片
+
