@@ -126,7 +126,6 @@ void read_xyz_extended(const string &filename) {
 #include <algorithm>   // std::max
 
 void init_velocities() {
-    // 使用输入文件的种子，如果没有设置就用时间
     unsigned seed = (rand_seed > 0) ? rand_seed : std::chrono::system_clock::now().time_since_epoch().count();
     std::mt19937 gen(seed);
     double stdv = sqrt(kB*T_target/mass);

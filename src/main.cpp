@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iomanip>
 #include <cstdlib>
-#include <chrono>      // 用于计时
+#include <chrono>      
 #include "../include/atom.h"
 #include "../include/io.h"
 #include "../include/force.h"
@@ -20,15 +20,15 @@ int main(int argc, char* argv[]){
         return 1;
     }
 
-    auto start_time = high_resolution_clock::now();  // 开始计时
+    auto start_time = high_resolution_clock::now();  
 
-    // ------------------- 读取输入 -------------------
-    read_input(argv[1]);           // 读取 input.in, 更新 rc 和 skin
+    // ------------------- input -------------------
+    read_input(argv[1]);           
     read_xyz_extended(coords_file);
     read_box(coords_file);
     init_velocities();
 
-    // ------------------- 打印输入参数 -------------------
+    // ------------------- print input Parameters-------------------
     cout << "================= Input Parameters =================" << endl;
     cout << "units      = " << units << endl;
     cout << "dt         = " << dt << endl;
@@ -65,12 +65,12 @@ int main(int argc, char* argv[]){
              << atoms[0].v[2] << endl;
     }
 
-    // ------------------- 设置 neighbor list -------------------
+    // ------------------- neighbor list -------------------
     nlist.rc = rc;
     nlist.skin = skin;
     nlist.build();
 
-    // ------------------- 初始化 NHC -------------------
+    // ------------------- initial NHC -------------------
     xi.assign(M,0.0);
     eta.assign(M,0.0);
     Q.assign(M,0.0);
@@ -78,7 +78,7 @@ int main(int argc, char* argv[]){
     for(int i=0;i<M;i++) Q[i]=kB*T_target*Tdamp*Tdamp;
     Q[0]=Nf*kB*T_target*Tdamp*Tdamp;
 
-    // ------------------- 主循环 -------------------
+    // ------------------- main -------------------
     double epot = compute_forces();
     double ekin = compute_kinetic();
 
@@ -125,13 +125,13 @@ int main(int argc, char* argv[]){
 
     fout.close();
 
-    // ------------------- 调用 Python 绘图 -------------------
+    // -------------------  Python  -------------------
     string cmd = "python3 data.py ";
-    cmd += argv[1];   // 传递输入文件名
+    cmd += argv[1];   
     int ret = system(cmd.c_str());
-    (void)ret;  // 忽略返回值，不输出 warning
+    (void)ret;  
 
-    // ------------------- 结束计时 -------------------
+    // ------------------- timing -------------------
     auto end_time = high_resolution_clock::now();
     auto duration = duration_cast<seconds>(end_time - start_time);
     cout << "Simulation finished. Results saved in "
