@@ -46,6 +46,7 @@ int main(int argc, char* argv[]){
     cout << "coords     = " << coords_file << endl;
     cout << "output     = " << output_file << endl;
     cout << "plot       = " << plot_file << endl;
+    cout << "rand_seed  = " << rand_seed << endl;
     cout << "N (atoms)  = " << N << endl;
     cout << "====================================================" << endl;
 
@@ -86,7 +87,7 @@ int main(int argc, char* argv[]){
     fout << "# Step   E_pot   E_kin   E_tot   Temp\n";
 
     for(int step=0; step<=nsteps; step++){
-        if(step%10==0) nlist.build();
+        if(step%1==0) nlist.build();
 
         nhc_halfstep(ekin);
 

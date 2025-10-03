@@ -1,14 +1,15 @@
 # ------------------- Simulation control -------------------
-units       real          # 单位制: real / lj
-dt          1.0           # 时间步长 (fs in real units)
-steps       100000        # 总步数
-thermo      1           # 每隔多少步输出一次热力学信息
-T_target    180.0         # 目标温度
-rand_seed   1234
+units       real         
+dt          1.0           
+steps       100000        
+thermo      1           
+T_target    180.0         
+rand_seed   123
 skin        0.2
+
 # ------------------- Nose–Hoover chain -------------------
-nhc_chain   3             # 链长 M
-Tdamp       80.0           # 温控阻尼
+nhc_chain   3             
+Tdamp       80.0           
 
 # ------------------- Lennard-Jones parameters-------------------
 epsilon     0.234         
