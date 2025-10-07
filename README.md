@@ -57,10 +57,4 @@ Install Python 3 and then:
 pip3 install numpy matplotlib
 ```
 
-Notes
------
-- Consider adding `.gitignore` to exclude binary artifacts (`bin/`, `*.o`, `md`, `output.log`, `*.png`).
-- This repo was recently reset to keep the current working tree; remote history may have been replaced.
-
-If you want, I can add a `.gitignore` and a Chinese README (`README-zh.md`) and push them as well.
 
