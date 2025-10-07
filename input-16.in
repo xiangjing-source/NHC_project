@@ -1,21 +1,11 @@
 # ------------------- Simulation control -------------------
-<<<<<<< HEAD
-units       real         
-=======
 units       real          
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
 dt          1.0           
 steps       100000        
 thermo      1           
 T_target    180.0         
-<<<<<<< HEAD
-rand_seed   123
+rand_seed   50
 skin        0.2
-
-=======
-rand_seed   1234
-skin        0.2
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
 # ------------------- Nose–Hoover chain -------------------
 nhc_chain   3             
 Tdamp       80.0           
@@ -27,13 +17,7 @@ rc          8.76
 mass        39.948        
 
 # ------------------- File IO -------------------
-<<<<<<< HEAD
-coords      coords16.data   # 初始结构
-output      output.log    # 输出日志
-plot        md_energy_temp.png   # 输出图片
-=======
 coords      coords16.data   
 output      output.log    
 plot        md_energy_temp.png   
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
 
