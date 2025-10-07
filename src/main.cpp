@@ -20,35 +20,21 @@ int main(int argc, char* argv[]){
         return 1;
     }
 
-<<<<<<< HEAD
-    auto start_time = high_resolution_clock::now();  
-
-    // ------------------- input -------------------
-    read_input(argv[1]);           
-=======
     auto start_time = high_resolution_clock::now();  // Start timing
 
     // ------------------- Read input -------------------
     read_input(argv[1]);           // Read input.in, update rc and skin
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
     read_xyz_extended(coords_file);
     read_box(coords_file);
     init_velocities();
 
-<<<<<<< HEAD
-    // ------------------- print input Parameters-------------------
-=======
     // ------------------- Print input parameters -------------------
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
     cout << "================= Input Parameters =================" << endl;
     cout << "units      = " << units << endl;
     cout << "dt         = " << dt << endl;
     cout << "steps      = " << nsteps << endl;
     cout << "thermo     = " << thermo << endl;
-<<<<<<< HEAD
-=======
     cout << "rand_seed  = " << rand_seed << endl;
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
     cout << "T_target   = " << T_target << endl;
     cout << "nhc_chain  = " << M << endl;
     cout << "Tdamp      = " << Tdamp << endl;
@@ -61,10 +47,6 @@ int main(int argc, char* argv[]){
     cout << "coords     = " << coords_file << endl;
     cout << "output     = " << output_file << endl;
     cout << "plot       = " << plot_file << endl;
-<<<<<<< HEAD
-    cout << "rand_seed  = " << rand_seed << endl;
-=======
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
     cout << "N (atoms)  = " << N << endl;
     cout << "====================================================" << endl;
 
@@ -84,20 +66,12 @@ int main(int argc, char* argv[]){
              << atoms[0].v[2] << endl;
     }
 
-<<<<<<< HEAD
-    // ------------------- neighbor list -------------------
-=======
     // ------------------- Set neighbor list -------------------
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
     nlist.rc = rc;
     nlist.skin = skin;
     nlist.build();
 
-<<<<<<< HEAD
-    // ------------------- initial NHC -------------------
-=======
     // ------------------- Initialize NHC -------------------
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
     xi.assign(M,0.0);
     eta.assign(M,0.0);
     Q.assign(M,0.0);
@@ -105,11 +79,7 @@ int main(int argc, char* argv[]){
     for(int i=0;i<M;i++) Q[i]=kB*T_target*Tdamp*Tdamp;
     Q[0]=Nf*kB*T_target*Tdamp*Tdamp;
 
-<<<<<<< HEAD
-    // ------------------- main -------------------
-=======
     // ------------------- Main loop -------------------
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
     double epot = compute_forces();
     double ekin = compute_kinetic();
 
@@ -117,10 +87,8 @@ int main(int argc, char* argv[]){
     fout << "# Step   E_pot   E_kin   E_tot   Temp\n";
 
     for(int step=0; step<=nsteps; step++){
-
         current_step = step;
     // Rebuild neighbor list every step (written as modulo 1 to make intent explicit)
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
         if(step%1==0) nlist.build();
 
         nhc_halfstep(ekin);
@@ -160,15 +128,6 @@ int main(int argc, char* argv[]){
 
     fout.close();
 
-<<<<<<< HEAD
-    // -------------------  Python  -------------------
-    string cmd = "python3 data.py ";
-    cmd += argv[1];   
-    int ret = system(cmd.c_str());
-    (void)ret;  
-
-    // ------------------- timing -------------------
-=======
     // ------------------- Call Python for plotting -------------------
     string cmd = "python3 data.py ";
     cmd += argv[1];   // Pass input filename
@@ -176,7 +135,6 @@ int main(int argc, char* argv[]){
     (void)ret;  // Ignore return value, do not output warning
 
     // ------------------- End timing -------------------
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
     auto end_time = high_resolution_clock::now();
     auto duration = duration_cast<seconds>(end_time - start_time);
     cout << "Simulation finished. Results saved in "

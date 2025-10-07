@@ -18,16 +18,15 @@ extern vector<double> xi, eta, Q;
 // Boltzmann constant
 extern double kB;
 
-<<<<<<< HEAD
-// Add random seed and neighbor list parameters
+// Random seed
 extern unsigned int rand_seed;  // Random seed
 extern double skin;             // Neighbor list buffer
 extern NeighborList nlist;
-=======
+
 // Add random seed and neighbor list parameters
 extern unsigned int rand_seed;  // Random seed
 extern double skin;             // Neighbor list buffer
 extern NeighborList nlist;
 // current simulation step (set in main loop) for diagnostics
 extern int current_step;
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
+

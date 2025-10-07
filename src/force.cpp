@@ -23,11 +23,7 @@ void NeighborList::build() {
     }
 }
 
-<<<<<<< HEAD
-// ------------------- 力计算 -------------------
-=======
 // ------------------- Force calculation -------------------
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
 double compute_forces() {
     for(int i=0;i<N;i++) for(int d=0;d<3;d++) atoms[i].f[d]=0;
     double epot=0;
@@ -41,11 +37,6 @@ double compute_forces() {
                 double dz = pbc(atoms[i].x[2]-atoms[j].x[2],Lz);
                 double r2 = dx*dx + dy*dy + dz*dz;
                 if(r2<rc*rc){
-<<<<<<< HEAD
-                    double r2i = 1.0/r2;
-                    double r6i = pow(sigma*sigma*r2i,3);
-                    double ff = 48*epsilon*r6i*(r6i-0.5)*r2i;
-=======
                     // detect dangerously close pairs (overlap) and write snapshot to help debugging
                     const double R2_WARN = 0.25 * sigma * sigma; // (0.5*sigma)^2
                     if(r2 < R2_WARN){
@@ -80,7 +71,6 @@ double compute_forces() {
                     if(ff > MAX_FORCE) ff = MAX_FORCE;
                     if(ff < -MAX_FORCE) ff = -MAX_FORCE;
 
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
                     atoms[i].f[0]+=ff*dx; atoms[i].f[1]+=ff*dy; atoms[i].f[2]+=ff*dz;
                     atoms[j].f[0]-=ff*dx; atoms[j].f[1]-=ff*dy; atoms[j].f[2]-=ff*dz;
                     epot += 4*epsilon*r6i*(r6i-1) - shift;
@@ -91,11 +81,7 @@ double compute_forces() {
     return epot;
 }
 
-<<<<<<< HEAD
-// ------------------- 动能和温度 -------------------
-=======
 // ------------------- Kinetic energy and temperature-------------------
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
 double compute_kinetic() {
     double vcm[3]={0.0,0.0,0.0};
     for(int i=0;i<N;i++) for(int d=0;d<3;d++) vcm[d]+=atoms[i].v[d];

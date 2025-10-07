@@ -7,7 +7,7 @@ struct NeighborList {
     double skin;
     vector<vector<int>> neigh;
 
-    NeighborList() : rc(0.0), skin(0.0) {}            // 默认构造
+    NeighborList() : rc(0.0), skin(0.0) {}            
     NeighborList(double rc_, double skin_) : rc(rc_), skin(skin_) {}
     void build();
 };
