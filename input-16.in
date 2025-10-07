@@ -4,7 +4,7 @@ dt          1.0
 steps       100000        
 thermo      1           
 T_target    180.0         
-rand_seed   50
+rand_seed   1234
 skin        0.2
 # ------------------- Nose–Hoover chain -------------------
 nhc_chain   3             
