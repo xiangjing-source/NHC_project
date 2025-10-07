@@ -3,11 +3,8 @@
 #include "../include/atom.h"
 #include "../include/globals.h"
 #include <cmath>
-<<<<<<< HEAD
-=======
 #include <iostream>
 #include <fstream>
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
 
 extern int N, M;
 extern double dt, kB, T_target;
@@ -21,8 +18,6 @@ void nhc_halfstep(double &ekin){
     double G = xi[M-2]*xi[M-2]/Q[M-2] - kB*T_target;
     xi[M-1] += dt4 * G;
 
-<<<<<<< HEAD
-=======
     // --- runtime diagnostics: check for NaN/inf or extremely large xi/eta/Q ---
     // soft-protection parameters
     const double XI_SOFT_MAX = 1e5;   // soft clamp for xi
@@ -82,7 +77,6 @@ void nhc_halfstep(double &ekin){
         }
     }
 
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
     for(int m = M-2; m >= 0; m--){
         double tmp = exp(-dt8 * xi[m+1]/Q[m+1]);
         if(m==0) G = 2.0*ekin - (3.0*N-3)*kB*T_target;
@@ -92,9 +86,6 @@ void nhc_halfstep(double &ekin){
     for(int m = M-1; m >=0; m--) eta[m] += dt2*xi[m]/Q[m];
 
     double scale = exp(-dt2*xi[0]/Q[0]);
-<<<<<<< HEAD
-    for(int i=0;i<N;i++) for(int d=0;d<3;d++) atoms[i].v[d] *= scale;
-=======
         // strict per-step scale clamp to avoid instant huge velocity multipliers
         const double SCALE_MIN = 0.5; // do not shrink velocities by more than 2x in one half-step
         const double SCALE_MAX = 2.0; // do not expand velocities by more than 2x in one half-step
@@ -124,7 +115,6 @@ void nhc_halfstep(double &ekin){
     }
     for(int i=0;i<N;i++) for(int d=0;d<3;d++) atoms[i].v[d] *= scale;
         for(int i=0;i<N;i++) for(int d=0;d<3;d++) atoms[i].v[d] *= scale;
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
 
     for(int m =0; m<M-1; m++){
         double tmp = exp(-dt8*xi[m+1]/Q[m+1]);
@@ -137,8 +127,6 @@ void nhc_halfstep(double &ekin){
     xi[M-1] += dt4*G;
 
     ekin = compute_kinetic();
-<<<<<<< HEAD
-=======
     if(!std::isfinite(ekin) || ekin > EKIN_SOFT_MAX){
         std::cerr << "NHC recovery: bad ekin="<<ekin<<" at step "<<current_step<<" - rescaling to target temperature\n";
         std::ofstream rlog("nhc_recovery.log", std::ios::app);
@@ -159,6 +147,5 @@ void nhc_halfstep(double &ekin){
         }
         ekin = compute_kinetic();
     }
->>>>>>> 62b2587 (Initial commit: English comments, cleaned workspace, ready for GitHub)
 }
 
